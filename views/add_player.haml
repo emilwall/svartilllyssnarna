@@ -1,13 +1,13 @@
 %html
   %head
   %body
-    %h1 Add a new player
+    %h1 Lägg till spelare
   
     %form{:action => "/players", :method => "post"}
-      %label{ :for => "name" }Name:
+      %label{ :for => "name" }Namn:
       %input{ :type => "text", :id => "name", :name => "name" }
       
-      %label{ :for => "name" }URL:
+      %label{ :for => "name" }Intern IP:
       %input{ :type => "text", :id => "url", :name => "url", :placeholder => "http://..."}
       
       %input{ :type => "submit", :value => "Submit"}

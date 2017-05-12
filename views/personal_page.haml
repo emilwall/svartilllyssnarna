@@ -1,22 +1,22 @@
 %html
   %head
-    %title Extreme Startup - #{name}
+    %title Svar till lyssnarna - #{name}
     %link(rel="stylesheet" href="/css/style.css")
   %body
     %h1
-      &= "Hello, #{name}!"
+      &= "Hej, #{name}!"
 
     %h2
-      Your score is:
+      Din poäng:
       %span.score #{score}
 
     %a{ :href => "/withdraw/#{playerid}" }
-      Withdraw
+      Avsluta
 
-    %h2 Log:
+    %h2 Logg:
     %ul
       - log.each do |logline|
         %li
           %div{:class => ["logline", "id", logline.result]} #{logline.id}
-          %div{:class => ["logline", "result", logline.result]} result: #{logline.result}
-          %div{:class => ["logline", "points", logline.result]} points awarded: #{logline.points}
+          %div{:class => ["logline", "result", logline.result]} resultat: #{logline.result}
+          %div{:class => ["logline", "points", logline.result]} points: #{logline.points}
