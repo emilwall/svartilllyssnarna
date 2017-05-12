@@ -34,9 +34,9 @@ module ExtremeStartup
 
     def result
       if @answer && self.answered_correctly?(answer)
-        "korrekt"
+        "correct"
       elsif @answer
-        "fel"
+        "wrong"
       else
         @problem
       end
@@ -44,18 +44,18 @@ module ExtremeStartup
 
     def delay_before_next
       case result
-        when "korrekt"        then 5
-        when "fel"          then 10
+        when "correct"        then 5
+        when "wrong"          then 10
         else 20
       end
     end
     
     def was_answered_correctly
-      result == "korrekt"
+      result == "correct"
     end
     
     def was_answered_wrongly
-      result == "fel"
+      result == "wrong"
     end
 
     def display_result
@@ -359,14 +359,14 @@ module ExtremeStartup
   require 'yaml'
   class AnagramQuestion < Question
     def as_text
-      possible_words = [@anagram["korrekt"]] + @anagram["inkorrekt"]
+      possible_words = [@anagram["correct"]] + @anagram["incorrect"]
       %Q{which of the following is an anagram of "#{@anagram["anagram"]}": #{possible_words.shuffle.join(", ")}}
     end
 
     def initialize(player, *words)
       if words.any?
         @anagram = {}
-        @anagram["anagram"], @anagram["korrekt"], *@anagram["inkorrekt"] = words
+        @anagram["anagram"], @anagram["correct"], *@anagram["incorrect"] = words
       else
         anagrams = YAML.load_file(File.join(File.dirname(__FILE__), "anagrams.yaml"))
         @anagram = anagrams.sample
@@ -374,7 +374,7 @@ module ExtremeStartup
     end
 
     def correct_answer
-      @anagram["korrekt"]
+      @anagram["correct"]
     end
   end
 
