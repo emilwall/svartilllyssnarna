@@ -318,11 +318,25 @@ module ExtremeStartup
     class << self
       def question_bank
         [
-          ["who is the Prime Minister of Great Britain", "Theresa May"],
-          ["which city is the Eiffel tower in", "Paris"],
-          ["what currency did Spain use before the Euro", "peseta"],
-          ["what colour is a banana", "yellow"],
-          ["who played James Bond in the film Dr No", "Sean Connery"]
+          ["vem är storbrittaniens premiärminister", "Theresa May"],
+          ["vem vann presidentvalet i Frankrike 2017", "Emmanuel Macron"],
+          ["i vilken stad ligger Eiffeltornet", "Paris"],
+          ["vilken valuta hade Spanien innan euro", "peseta"],
+          ["vilken färg har en banan", "gul"],
+          ["vilket år invigdes radiohuset", "1962"],
+          ["vilket år började Sveriges Radio sända svensktoppen?", "1962"],
+          ["vilket år tecknades den första radiolicensen", "1923"],
+          ["vad heter Sveriges Radios språkdatabas", "Dixi"],
+          ["vad heter moderbolaget till Sveriges Television", "Sveriges Radio"],
+          ["vad kallas hallen mellan radiohusets två hushalvor", "Hangaren"],
+          ["hur många patent stal assistenten Guglielmo Marconi av Nikola Tesla", "17"],
+          ["vad heter Sveriges Radios VD", "Cilla Benkö"],
+          ["vad kallas det när ett material", "Cilla Benkö"],
+          ["förkortning av viktigt meddelande till allmänheten", "VMA"],
+          ["vad hette radioprogrammet som startades som reaktion mot piratradiosändarna på sextiotalet", "Melodiradion"],
+          ["vad kallas kyrkogården som ligger i anslutning till radiohuset", "Artillerikyrkogården"],
+          ["vilken radiokanal startade 1987, som riktade sig till personer som är 37+", "P4"],
+          ["vem spelade James Bond i filmen Dr No", "Sean Connery"]
         ]
       end
     end
