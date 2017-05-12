@@ -34,9 +34,9 @@ module ExtremeStartup
 
     def result
       if @answer && self.answered_correctly?(answer)
-        "correct"
+        "korrekt"
       elsif @answer
-        "wrong"
+        "fel"
       else
         @problem
       end
@@ -44,18 +44,18 @@ module ExtremeStartup
 
     def delay_before_next
       case result
-        when "correct"        then 5
-        when "wrong"          then 10
+        when "korrekt"        then 5
+        when "fel"          then 10
         else 20
       end
     end
     
     def was_answered_correctly
-      result == "correct"
+      result == "korrekt"
     end
     
     def was_answered_wrongly
-      result == "wrong"
+      result == "fel"
     end
 
     def display_result
@@ -134,7 +134,7 @@ module ExtremeStartup
 
   class MaximumQuestion < SelectFromListOfNumbersQuestion
     def as_text
-      "which of the following numbers is the largest: " + @numbers.join(', ')
+      "Vilket av följande tal är störst: " + @numbers.join(', ')
     end
     def points
       40
@@ -151,7 +151,7 @@ module ExtremeStartup
 
   class AdditionQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} plus #{@n2}"
+      "vad är #{@n1} plus #{@n2}"
     end
   private
     def correct_answer
@@ -161,7 +161,7 @@ module ExtremeStartup
 
   class SubtractionQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} minus #{@n2}"
+      "vad är #{@n1} minus #{@n2}"
     end
   private
     def correct_answer
@@ -171,7 +171,7 @@ module ExtremeStartup
 
   class MultiplicationQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} multiplied by #{@n2}"
+      "vad är #{@n1} gånger #{@n2}"
     end
   private
     def correct_answer
@@ -181,7 +181,7 @@ module ExtremeStartup
 
   class AdditionAdditionQuestion < TernaryMathsQuestion
     def as_text
-      "what is #{@n1} plus #{@n2} plus #{@n3}"
+      "vad är #{@n1} plus #{@n2} plus #{@n3}"
     end
     def points
       30
@@ -194,7 +194,7 @@ module ExtremeStartup
 
   class AdditionMultiplicationQuestion < TernaryMathsQuestion
     def as_text
-      "what is #{@n1} plus #{@n2} multiplied by #{@n3}"
+      "vad är #{@n1} plus #{@n2} gånger #{@n3}"
     end
     def points
       60
@@ -207,7 +207,7 @@ module ExtremeStartup
 
   class MultiplicationAdditionQuestion < TernaryMathsQuestion
     def as_text
-      "what is #{@n1} multiplied by #{@n2} plus #{@n3}"
+      "vad är #{@n1} gånger #{@n2} plus #{@n3}"
     end
     def points
       50
@@ -220,7 +220,7 @@ module ExtremeStartup
 
   class PowerQuestion < BinaryMathsQuestion
     def as_text
-      "what is #{@n1} to the power of #{@n2}"
+      "vad är #{@n1} upphöjt till #{@n2}"
     end
     def points
       20
@@ -233,7 +233,7 @@ module ExtremeStartup
 
   class SquareCubeQuestion < SelectFromListOfNumbersQuestion
     def as_text
-      "which of the following numbers is both a square and a cube: " + @numbers.join(', ')
+      "vilket av följande nummer är både kvadrattal och kubiktal: " + @numbers.join(', ')
     end
     def points
       60
@@ -266,7 +266,7 @@ module ExtremeStartup
 
   class PrimesQuestion < SelectFromListOfNumbersQuestion
      def as_text
-       "which of the following numbers are primes: " + @numbers.join(', ')
+       "vilket av följande är primtal: " + @numbers.join(', ')
      end
      def points
        60
@@ -300,7 +300,7 @@ module ExtremeStartup
     end
     def as_text
       n = @n1 + 4
-      return "what is the #{ordinalize(n)} number in the Fibonacci sequence"
+      return "vilket är det #{ordinalize(n)} numret i Fibonacci-sekvensen"
     end
     def points
       50
@@ -345,14 +345,14 @@ module ExtremeStartup
   require 'yaml'
   class AnagramQuestion < Question
     def as_text
-      possible_words = [@anagram["correct"]] + @anagram["incorrect"]
+      possible_words = [@anagram["korrekt"]] + @anagram["inkorrekt"]
       %Q{which of the following is an anagram of "#{@anagram["anagram"]}": #{possible_words.shuffle.join(", ")}}
     end
 
     def initialize(player, *words)
       if words.any?
         @anagram = {}
-        @anagram["anagram"], @anagram["correct"], *@anagram["incorrect"] = words
+        @anagram["anagram"], @anagram["korrekt"], *@anagram["inkorrekt"] = words
       else
         anagrams = YAML.load_file(File.join(File.dirname(__FILE__), "anagrams.yaml"))
         @anagram = anagrams.sample
@@ -360,20 +360,20 @@ module ExtremeStartup
     end
 
     def correct_answer
-      @anagram["correct"]
+      @anagram["korrekt"]
     end
   end
 
   class ScrabbleQuestion < Question
     def as_text
-      "what is the english scrabble score of #{@word}"
+      "vad är engelska scrabble-poängen för #{@word}"
     end
 
     def initialize(player, word=nil)
       if word
         @word = word
       else
-        @word = ["banana", "september", "cloud", "zoo", "ruby", "buzzword"].sample
+        @word = ["banan", "september", "cloud", "zoo", "ruby", "buzzword"].sample
       end
     end
 
@@ -444,7 +444,7 @@ module ExtremeStartup
     end
 
     def as_text
-      "what is your name"
+      "vad heter du"
     end
   end
 
@@ -454,7 +454,7 @@ module ExtremeStartup
     end
 
     def advance_round
-      raise("please just restart the server")
+      raise("vänligen starta om servern")
     end
   end
 
